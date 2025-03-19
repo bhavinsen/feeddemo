@@ -14,7 +14,7 @@ Frontend
 ------
 1) go to the front directory and run `npm i`. 
 2) start the project with `npm run dev`
-3) The backend will connect on `http://localhost:5173`
+3) The frontend will connect on `http://localhost:5173`
 
 
 <img width="1792" alt="Screenshot 2025-03-19 at 9 42 36 AM" src="https://github.com/user-attachments/assets/8e126158-726a-49f5-bcb6-1829fc961fd8" />
