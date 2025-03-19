@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --exec npm start",
+    "start": "nodemon -e ts  --exec \"npm run myapp\"",
+    "myapp": "tsc -p . && node dist/server.js",
+    "test": "tsc && jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.10",
+    "@types/ws": "^8.18.0",
+    "jest": "^29.7.0",
+    "jest-websocket-mock": "^2.5.0",
+    "nodemon": "^3.1.9",
+    "ts-jest": "^29.2.6",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1",
+    "ws": "^8.18.1"
+  }
+}
