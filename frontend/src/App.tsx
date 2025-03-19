@@ -41,6 +41,7 @@ function App() {
       socket.emit("unsubscribe", subscribeList);
       setSubscribeList([]);
       setConnected(false);
+      console.log('ssj',connected)
     });
   }, [socket]);
 
@@ -77,7 +78,7 @@ function App() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Status connected />
+          <Status connected={connected} />
           {products.map((product: string) => {
             return (
               <ToolTipButton
@@ -92,17 +93,31 @@ function App() {
       </AppBar>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {subscribeList.map((list: string) => {
-            return (
-              <Grid size={4} key={list}>
-                <CurrencyCard
-                  title={list}
-                  data={data?.[list]}
-                  handleUnSubscribe={handleUnSubscribe}
-                ></CurrencyCard>
-              </Grid>
-            );
-          })}
+          {subscribeList.length > 0 ? (
+            subscribeList.map((list: string) => {
+              return (
+                <Grid size={4} key={list}>
+                  <CurrencyCard
+                    title={list}
+                    data={data?.[list]}
+                    handleUnSubscribe={handleUnSubscribe}
+                  ></CurrencyCard>
+                </Grid>
+              );
+            })
+          ) : (
+            <Grid
+              size={12}
+              style={{
+                textAlign: "center",
+                fontSize: "30px",
+                fontWeight: "bold",
+                paddingTop: "50px",
+              }}
+            >
+              Yo are not subscribed to any product.
+            </Grid>
+          )}
         </Grid>
       </Box>
     </Box>

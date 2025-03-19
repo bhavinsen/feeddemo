@@ -4,6 +4,12 @@ let ws: WebSocket | null = null;
 let reconnectTimeout: NodeJS.Timeout | null = null;
 let data = {};
 
+/**
+ * connect or reconnect to Coinbase's feed
+ * 
+ * @param products 
+ * @param socket 
+ */
 export function connect(products: string[], socket: any) {
     ws = new WebSocket('wss://ws-feed-public.sandbox.exchange.coinbase.com');
 
@@ -56,6 +62,9 @@ export function connect(products: string[], socket: any) {
       };
 }
 
+/**
+ *  cleanup current connection and schedule connection
+ */
 function cleanupAndReconnect() {
     if (ws) {
       // Remove event handlers.
@@ -74,6 +83,12 @@ function cleanupAndReconnect() {
     reconnectTimeout = setTimeout(connect, 5000);
   }
 
+  /**
+   * Gracefully shut down the WebSocket connection on process termination.
+   * 
+   * @param products 
+   * @param socket 
+   */
 export function shutdown(products: string[], socket: any) {
     console.log("Shutting down gracefully...");
     if (reconnectTimeout) {
@@ -93,5 +108,4 @@ export function shutdown(products: string[], socket: any) {
       ws.send(JSON.stringify(unsubscribeMessage));
       ws.close(1000, "Process terminated");
     }
-    //process.exit(0);
   }

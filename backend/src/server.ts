@@ -2,10 +2,12 @@
 import express from 'express';
 import http from 'http';
 import cors from 'cors'
+import dotenv from 'dotenv';
+dotenv.config();
 
 import { setupSocket } from './socket';
 
-const port = 3000;
+const port = process.env.PORT;
 
 const app = express();
 app.use(cors());

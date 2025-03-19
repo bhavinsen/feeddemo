@@ -8,8 +8,6 @@ import App from './App';
 import 'material-react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-console.log(import.meta.env.VITE_APP_SOCKET_URL) // "123"
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
